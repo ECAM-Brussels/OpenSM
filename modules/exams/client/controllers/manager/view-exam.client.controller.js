@@ -28,6 +28,8 @@
     vm.removeRoom = removeRoom;
     vm.config = Array.apply(null, new Array(vm.exam.rooms.length)).map(function(x, i) {
       return {
+        course: vm.exam.course.code + ' ' + vm.exam.course.name,
+        date: moment(vm.exam.date).format('MMMM Do YYYY, h:mm:ss a'),
         room: vm.exam.rooms[i].room,
         configuration: vm.exam.rooms[i].configuration,
         startseat: vm.exam.rooms[i].startseat,
@@ -36,6 +38,14 @@
     });
     vm.changeConfiguration = changeConfiguration;
     vm.downloadMap = downloadMap;
+
+
+    vm.downloadRoom = downloadRoom;
+    function downloadRoom(i) {
+      console.log('Kikoo');
+      $window.location.href = $('canvas')[i].toDataURL("image/png");
+    }
+
 
     // Copies management
     vm.getLetter = getLetter;
@@ -241,5 +251,44 @@
     function downloadCopy(i) {
       $window.open('/api/exams/' + vm.exam._id + '/copy/' + i + '/download');
     }
+
+
+    vm.loadStudentsFromXLS = loadStudentsFromXLS;
+
+    function loadStudentsFromXLS() {
+      console.log('coucou');
+
+      var file = document.getElementById('xlsfile').files[0];
+      if (file !== undefined) {
+        console.log(file);
+        Papa.parse(file, {
+          complete: function (results) {
+            console.log(results);
+            var usernames = [];
+            for (var i = 1; i < results.data.length; i++) {
+              if (results.data[i][2]) {
+                usernames.push(results.data[i][2]);
+              }
+            }
+            console.log(usernames);
+            $http.post('/api/exams/' + vm.exam._id + '/loadStudentsFromXLS', { students: usernames }).then(onSuccess, onError);
+          }
+        });
+      }
+
+      function onSuccess(response) {
+        vm.exam.registrations = response.data;
+
+        Notification.success({ message: '<i class="glyphicon glyphicon-exclamation-sign"></i> Importation OK !' });
+      }
+
+      function onError(errorResponse) {
+        var error = errorResponse.data;
+
+        Notification.error({ message: '<i class="glyphicon glyphicon-exclamation-sign"></i> ' + error.message });
+      }
+    }
+
+
   }
 }());

@@ -41,7 +41,8 @@ module.exports = {
         'public/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
         'public/lib/angular-translate-storage-local/angular-translate-storage-local.js',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.js',
-        'public/lib/angular-mocks/angular-mocks.js'
+        'public/lib/angular-mocks/angular-mocks.js',
+        'public/lib/papaparse/papaparse.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
