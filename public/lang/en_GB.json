@@ -25,10 +25,15 @@
     "TEACHERS": "Teachers",
     "ADD_TEACHER": "Add a teacher",
     "TEACHER_MISSING_ERROR": "Please select at least one teacher.",
+    "HOURS": "Hours",
+    "HOURS_ERROR": "Please fill in the number of hours.",
+    "EVALUATIONS": "Evaluations",
     "DESCRIPTION": "Description",
     "NO_DESCRIPTION": "@:GENERAL.NO_DESCRIPTION",
-    "SUCCESSFUL_CREATION": "The activity \"{{code}}\" has been successfully created!",
-    "SUCCESSFUL_UPDATE": "The activity \"{{code}}\" has been successfully updated!"
+    "CREATION": "@:GENERAL.CREATION",
+    "SUCCESSFUL_CREATION": "The \"{{code}}\" activity has been successfully created!",
+    "UPDATE": "@:GENERAL.UPDATE",
+    "SUCCESSFUL_UPDATE": "The \"{{code}}\" activity has been successfully updated!"
   },
   "AUTHENTICATION": {
     "SIGN_IN": "Sign in",
@@ -36,6 +41,25 @@
     "FORGOT_PASSWORD": "Forgot your password?"
   },
   "BY": "By",
+  "COMPANY": {
+    "COMPANIES": "Companies",
+    "CREATE": "Create a company",
+    "NO_COMPANY": "No companies yet.",
+    "NB_COMPANIES": "Number of companies",
+    "NAME": "Name",
+    "NAME_REQUIRED_ERROR": "Please fill in the name.",
+    "ADDRESS": {
+      "STREET_REQUIRED_ERROR": "Please fill in the street.",
+      "NUMBER_REQUIRED_ERROR": "Please fill in the number.",
+      "ZIPCODE_REQUIRED_ERROR": "Please fill in the zipcode.",
+      "CITY_REQUIRED_ERROR": "Please fill in the city.",
+      "COUNTRY_REQUIRED_ERROR": "Please fill in the country."
+    },
+    "CREATION": "@:GENERAL.CREATION",
+    "SUCCESSFUL_CREATION": "The \"{{name}}\" company has been successfully created!",
+    "UPDATE": "@:GENERAL.UPDATE",
+    "SUCCESSFUL_UPDATE": "The \"{{name}}\" company has been successfully updated!"
+  },
   "COURSE": {
     "COURSES": "Courses",
     "CREATE": "Create a course",
@@ -48,6 +72,9 @@
     "COORDINATOR": "Coordinator",
     "COORDINATOR_MISSING_ERROR": "Please select the coordinator.",
     "COORDINATOR_TOOMUCH_ERROR": "Please select only one coordinator.",
+    "CREDITS": "Credits",
+    "CREDITS_REQUIRED_ERROR": "Please fill in the number of credits.",
+    "HOURS": "Hours",
     "TEAM": "Team",
     "DESCRIPTION": "Description",
     "NO_DESCRIPTION": "@:GENERAL.NO_DESCRIPTION",
@@ -55,8 +82,11 @@
     "ADD_ACTIVITIES": "Add an activity",
     "NO_ACTIVITY": "No activities.",
     "NB_ACTIVITIES": "@:ACTIVITY.NB_ACTIVITIES",
-    "SUCCESSFUL_CREATION": "The course \"{{code}}\" has been successfully created!",
-    "SUCCESSFUL_UPDATE": "The course \"{{code}}\" has been successfully updated!"
+    "ACTIVITY_HOURS": "h",
+    "CREATION": "@:GENERAL.CREATION",
+    "SUCCESSFUL_CREATION": "The \"{{code}}\" course has been successfully created!",
+    "UPDATE": "@:GENERAL.UPDATE",
+    "SUCCESSFUL_UPDATE": "The \"{{code}}\" course has been successfully updated!"
   },
   "DASHBOARD": {
     "DASHBOARD": "Dashboard",
@@ -91,6 +121,12 @@
     },
     "CREATE": "Create an evaluation grid",
     "SUCCESSFUL_DELETE": "The evaluation grid \"{{code}}\" has been successfully deleted!"
+  },
+  "EVALUATION": {
+    "WRITTEN": "Written exam",
+    "ORAL": "Oral exam",
+    "ASSIGNMENT": "Assignment",
+    "PROJECT": "Project"
   },
   "EXAM": {
     "EXAMS": "Exams",
@@ -195,13 +231,22 @@
   },
   "GENERAL": {
     "ACADEMICYEAR": "Academic year",
+    "ADD": "Add",
+    "ADDRESS": {
+      "STREET": "Street",
+      "NUMBER": "Number",
+      "ZIPCODE": "Zip code",
+      "CITY": "City",
+      "COUNTRY": "Country"
+    },
     "CREATE": "Create",
-    "EDIT": "Edit",
-    "UPDATE": "Update",
+    "CREATION": "Creation",
     "DELETE": "Delete",
     "DELETE_CONFIRMATION": "Are you sure you want to delete {{name}}?",
-    "ADD": "Add",
-    "NO_DESCRIPTION": "No description."
+    "EDIT": "Edit",
+    "ERROR": "Error",
+    "NO_DESCRIPTION": "No description.",
+    "UPDATE": "Update"
   },
   "HOME": {
     "LEAD": "Welcome on the OpenSM platform!",
@@ -234,7 +279,9 @@
     "NO_PICTURES": "No pictures yet.",
     "MAP": "Map",
     "NO_MAP": "No map yet.",
+    "CREATION": "@:GENERAL.CREATION",
     "SUCCESSFUL_CREATION": "The room \"{{code}}\" has been successfully created!",
+    "UPDATE": "@:GENERAL.UPDATE",
     "SUCCESSFUL_UPDATE": "The room \"{{code}}\" has been successfully updated!",
     "SUCCESSFUL_DELETE": "The room \"{{code}}\" has been successfully deleted!",
     "CONFIGURATION": "Room configuration",

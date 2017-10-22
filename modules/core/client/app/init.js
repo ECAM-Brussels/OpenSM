@@ -10,15 +10,20 @@
     .module(app.applicationModuleName)
     .config(bootstrapConfig);
 
-  bootstrapConfig.$inject = ['$locationProvider', '$httpProvider'];
+  bootstrapConfig.$inject = ['$compileProvider', '$locationProvider', '$httpProvider', '$logProvider'];
 
-  function bootstrapConfig($locationProvider, $httpProvider) {
+  function bootstrapConfig($compileProvider, $locationProvider, $httpProvider, $logProvider) {
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
     }).hashPrefix('!');
 
     $httpProvider.interceptors.push('authInterceptor');
+
+    // Disable debug data for production environment
+    // @link https://docs.angularjs.org/guide/production
+    $compileProvider.debugInfoEnabled(app.applicationEnvironment !== 'production');
+    $logProvider.debugEnabled(app.applicationEnvironment !== 'production');
   }
 
   // Configure translation
@@ -31,7 +36,7 @@
   function translationConfig($translateProvider) {
     $translateProvider.useSanitizeValueStrategy('escape');
     $translateProvider.useStaticFilesLoader({
-      prefix: 'lang/',
+      prefix: '/lang/',
       suffix: '.json'
     });
     $translateProvider.preferredLanguage('en_GB');

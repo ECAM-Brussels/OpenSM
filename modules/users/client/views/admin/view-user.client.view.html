@@ -8,7 +8,7 @@
         <a class="btn btn-primary" ui-sref="admin.user-edit({userId: vm.user._id})">
           <i class="glyphicon glyphicon-edit"></i>
         </a>
-        <a class="btn btn-primary" ng-click="vm.remove()" ng-if="vm.user._id !== vm.authentication.user._id">
+        <a class="btn btn-primary" ng-click="vm.remove()" ng-if="!vm.isContextUserSelf()">
           <i class="glyphicon glyphicon-trash"></i>
         </a>
       </div>
@@ -18,13 +18,13 @@
   <div class="row">
     <div class="col-md-8">
       <div class="row">
-        <div class="col-md-3"><strong>First Name</strong></div>
-        <div class="col-md-6" ng-bind="vm.user.firstName"></div>
+        <div class="col-md-3"><strong>Firstname</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.firstname"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Last Name</strong></div>
-        <div class="col-md-6" ng-bind="vm.user.lastName"></div>
+        <div class="col-md-3"><strong>Lastname</strong></div>
+        <div class="col-md-6" ng-bind="vm.user.lastname"></div>
       </div>
       <hr/>
       <div class="row">

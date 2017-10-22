@@ -12,9 +12,9 @@
       <form name="vm.signinForm" ng-submit="vm.signin(vm.signinForm.$valid)" class="signin" novalidate autocomplete="off">
         <fieldset>
           <div class="form-group" show-errors>
-            <label for="username" ng-bind="'USER.USERNAME' | translate"></label>
-            <input type="text" id="username" name="username" class="form-control" ng-model="vm.credentials.username" placeholder="{{'USER.USERNAME' | translate}}" required />
-            <div ng-messages="vm.signinForm.username.$error" role="alert">
+            <label for="usernameOrEmail" ng-bind="'USER.USERNAME' | translate"></label>
+            <input type="text" id="usernameOrEmail" name="usernameOrEmail" class="form-control" ng-model="vm.credentials.usernameOrEmail" placeholder="{{'USER.USERNAME' | translate}}" required />
+            <div ng-messages="vm.signinForm.usernameOrEmail.$error" role="alert">
               <p class="help-block error-text" ng-message="required" ng-bind="'USER.USERNAME_ERROR' | translate"></p>
             </div>
           </div>
@@ -49,6 +49,7 @@
           <ul>
             <li><a ui-sref="admin.manage.academicyears.list" ng-bind="'ACADEMICYEAR.ACADEMICYEARS' | translate"></a></li>
             <li><a ui-sref="admin.manage.activities.list" ng-bind="'ACTIVITY.ACTIVITIES' | translate"></a></li>
+            <li><a ui-sref="admin.manage.companies.list" ng-bind="'COMPANY.COMPANIES' | translate"></a></li>
             <li><a ui-sref="admin.manage.courses.list" ng-bind="'COURSE.COURSES' | translate"></a></li>
             <li><a ui-sref="admin.manage.evalgrids.list" ng-bind="'EVALGRID.EVALGRIDS' | translate"></a></li>
             <li><a ui-sref="admin.manage.exams.list" ng-bind="'EXAM.EXAMS' | translate"></a></li>

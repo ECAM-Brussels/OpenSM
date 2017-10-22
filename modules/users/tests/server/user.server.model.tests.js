@@ -5,7 +5,9 @@
  */
 var should = require('should'),
   mongoose = require('mongoose'),
-  User = mongoose.model('User');
+  User = mongoose.model('User'),
+  path = require('path'),
+  config = require(path.resolve('./config/config'));
 
 /**
  * Globals
@@ -21,8 +23,8 @@ describe('User Model Unit Tests:', function () {
 
   before(function () {
     user1 = {
-      firstName: 'Full',
-      lastName: 'Name',
+      firstname: 'Full',
+      lastname: 'Name',
       displayName: 'Full Name',
       email: 'test@test.com',
       username: 'username',
@@ -32,8 +34,8 @@ describe('User Model Unit Tests:', function () {
     // user2 is a clone of user1
     user2 = user1;
     user3 = {
-      firstName: 'Different',
-      lastName: 'User',
+      firstname: 'Different',
+      lastname: 'User',
       displayName: 'Full Different Name',
       email: 'test3@test.com',
       username: 'different_username',
@@ -80,7 +82,7 @@ describe('User Model Unit Tests:', function () {
     it('should be able to show an error when trying to save without first name', function (done) {
       var _user1 = new User(user1);
 
-      _user1.firstName = '';
+      _user1.firstname = '';
       _user1.save(function (err) {
         should.exist(err);
         done();
@@ -141,7 +143,7 @@ describe('User Model Unit Tests:', function () {
       _user1.save(function (err) {
         should.not.exist(err);
         var passwordBefore = _user1.password;
-        _user1.firstName = 'test';
+        _user1.firstname = 'test';
         _user1.save(function (err) {
           var passwordAfter = _user1.password;
           passwordBefore.should.equal(passwordAfter);
@@ -638,6 +640,89 @@ describe('User Model Unit Tests:', function () {
         } else {
           done();
         }
+      });
+    });
+
+  });
+
+  describe('Username Validation', function() {
+    it('should show error to save username beginning with .', function(done) {
+      var _user = new User(user1);
+
+      _user.username = '.login';
+      _user.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should be able to show an error when try to save with not allowed username', function (done) {
+      var _user = new User(user1);
+
+      _user.username = config.illegalUsernames[Math.floor(Math.random() * config.illegalUsernames.length)];
+      _user.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should show error to save username end with .', function(done) {
+      var _user = new User(user1);
+
+      _user.username = 'login.';
+      _user.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should show error to save username with ..', function(done) {
+      var _user = new User(user1);
+
+      _user.username = 'log..in';
+      _user.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should show error to save username shorter than 3 character', function(done) {
+      var _user = new User(user1);
+
+      _user.username = 'lo';
+      _user.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should show error saving a username without at least one alphanumeric character', function(done) {
+      var _user = new User(user1);
+
+      _user.username = '-_-';
+      _user.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should show error saving a username longer than 34 characters', function(done) {
+      var _user = new User(user1);
+
+      _user.username = 'l'.repeat(35);
+      _user.save(function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should save username with dot', function(done) {
+      var _user = new User(user1);
+
+      _user.username = 'log.in';
+      _user.save(function(err) {
+        should.not.exist(err);
+        done();
       });
     });
 

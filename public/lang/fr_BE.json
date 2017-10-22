@@ -25,9 +25,14 @@
     "TEACHERS": "Enseignants",
     "ADD_TEACHER": "Ajouter un enseignant",
     "TEACHER_MISSING_ERROR": "Veuillez spécifier au moins un enseignant.",
+    "HOURS": "Heures",
+    "HOURS_ERROR": "Veuillez spécifier le nombre d'heures.",
+    "EVALUATIONS": "Évaluations",
     "DESCRIPTION": "Description",
     "NO_DESCRIPTION": "@:GENERAL.NO_DESCRIPTION",
+    "CREATION": "@:GENERAL.CREATION",
     "SUCCESSFUL_CREATION": "L'activité \"{{code}}\" a été créée avec succès !",
+    "UPDATE": "@:GENERAL.UPDATE",
     "SUCCESSFUL_UPDATE": "L'activité \"{{code}}\" a été mise à jour avec succès !"
   },
   "AUTHENTICATION": {
@@ -36,6 +41,25 @@
     "FORGOT_PASSWORD": "Mot de passe oublié ?"
   },
   "BY": "Par",
+  "COMPANY": {
+    "COMPANIES": "Entreprises",
+    "CREATE": "Créer une entreprise",
+    "NO_COMPANY": "Aucune entreprise.",
+    "NB_COMPANIES": "Nombre d'entreprises",
+    "NAME": "Nom",
+    "NAME_REQUIRED_ERROR": "Veuillez spécifier le nom.",
+    "ADDRESS": {
+      "STREET_REQUIRED_ERROR": "Veuillez spécifier la rue.",
+      "NUMBER_REQUIRED_ERROR": "Veuillez spécifier le numéro.",
+      "ZIPCODE_REQUIRED_ERROR": "Veuillez spécifier le code postal.",
+      "CITY_REQUIRED_ERROR": "Veuillez spécifier la ville.",
+      "COUNTRY_REQUIRED_ERROR": "Veuillez spécifier le pays."
+    },
+    "CREATION": "@:GENERAL.CREATION",
+    "SUCCESSFUL_CREATION": "L'entreprise \"{{name}}\" a été créée avec succès !",
+    "UPDATE": "@:GENERAL.UPDATE",
+    "SUCCESSFUL_UPDATE": "L'entreprise \"{{name}}\" a été mise à jour avec succès !"
+  },
   "COURSE": {
     "COURSES": "Cours",
     "CREATE": "Créer un cours",
@@ -48,6 +72,9 @@
     "COORDINATOR": "Coordinateur",
     "COORDINATOR_MISSING_ERROR": "Veuillez spécifier le coordinateur.",
     "COORDINATOR_TOOMUCH_ERROR": "Veuillez ne spécifier qu'un seul coordinateur.",
+    "CREDITS": "Crédits",
+    "CREDITS_REQUIRED_ERROR": "Veuillez spécifier le nombre de crédits.",
+    "HOURS": "Heures",
     "TEAM": "Équipe",
     "DESCRIPTION": "Description",
     "NO_DESCRIPTION": "@:GENERAL.NO_DESCRIPTION",
@@ -55,7 +82,10 @@
     "ADD_ACTIVITIES": "Ajouter une activité",
     "NO_ACTIVITY": "Pas d'activité.",
     "NB_ACTIVITIES": "@:ACTIVITY.NB_ACTIVITIES",
+    "ACTIVITY_HOURS": "h",
+    "CREATION": "@:GENERAL.CREATION",
     "SUCCESSFUL_CREATION": "Le cours \"{{code}}\" a été créé avec succès !",
+    "UPDATE": "@:GENERAL.UPDATE",
     "SUCCESSFUL_UPDATE": "Le cours \"{{code}}\" a été mis à jour avec succès !"
   },
   "DASHBOARD": {
@@ -90,6 +120,12 @@
       "SCORE": "Score"
     },
     "CREATE": "Créer une grille d'évaluation"
+  },
+  "EVALUATION": {
+    "WRITTEN": "Examen écrit",
+    "ORAL": "Examen oral",
+    "ASSIGNMENT": "Travail",
+    "PROJECT": "Projet"
   },
   "EXAM": {
     "EXAMS": "Examens",
@@ -194,13 +230,22 @@
   },
   "GENERAL": {
     "ACADEMICYEAR": "Année académique",
+    "ADD": "Ajouter",
+    "ADDRESS": {
+      "STREET": "Rue",
+      "NUMBER": "Numéro",
+      "ZIPCODE": "Code postal",
+      "CITY": "Ville",
+      "COUNTRY": "Pays"
+    },
     "CREATE": "Créer",
-    "EDIT": "Éditer",
-    "UPDATE": "Mettre à jour",
+    "CREATION": "Création",
     "DELETE": "Supprimer",
     "DELETE_CONFIRMATION": "Êtes-vous sûr de vouloir supprimer {{name}} ?",
-    "ADD": "Ajouter",
-    "NO_DESCRIPTION": "No description."
+    "EDIT": "Éditer",
+    "ERROR": "Erreur",
+    "NO_DESCRIPTION": "No description.",
+    "UPDATE": "Mettre à jour"
   },
   "HOME": {
     "LEAD": "Bienvenue sur la plateforme OpenSM !",
@@ -233,7 +278,9 @@
     "NO_PICTURES": "Aucune photos.",
     "MAP": "Plan",
     "NO_MAP": "Pas de plan.",
+    "CREATION": "@:GENERAL.CREATION",
     "SUCCESSFUL_CREATION": "Le local \"{{code}}\" a été créé avec succès !",
+    "CREATION": "@:GENERAL.UPDATE",
     "SUCCESSFUL_UPDATE": "Le local \"{{code}}\" a été mis à jour avec succès !",
     "SUCCESSFUL_DELETE": "Le local \"{{code}}\" a été supprimé avec succès !",
     "CONFIGURATION": "Configuration du local",

@@ -7,8 +7,7 @@
       <span class="icon-bar"></span>
     </button>
     <a ui-sref="home" class="navbar-brand">
-      <img src="modules/core/client/img/opensm-logo.png"
-      alt="OpenSM logo" width="64" height="37" />
+      <img src="/modules/core/client/img/opensm-logo.png" alt="OpenSM logo" width="64" height="37" />
     </a>
   </div>
   <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
@@ -17,7 +16,7 @@
         <a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
         <ul ng-switch-when="dropdown" class="dropdown-menu">
           <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(vm.authentication.user);">
-            <a ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
+            <a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title"></a>
           </li>
         </ul>
         <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
@@ -26,7 +25,7 @@
     <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user">
       <li class="dropdown" uib-dropdown>
         <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
-          <img ng-src="{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
+          <img ng-src="/{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
           <span ng-bind="vm.authentication.user.displayName"></span> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu" role="menu">
@@ -40,9 +39,9 @@
         </ul>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user && vm.academicyear !== null">
       <li class="dropdown" dropdown>
-        <a class="dropdown-toggle" dropdown-toggle role="button">2015&ndash;2016</a>
+        <a class="dropdown-toggle" dropdown-toggle role="button">{{vm.academicyear.code}}&ndash;{{vm.academicyear.code+1}}</a>
       </li>
     </ul>
   </nav>
