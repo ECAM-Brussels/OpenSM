@@ -784,21 +784,33 @@ exports.generateCopies = function (req, res) {
       if (totalGenerated === exam.registrations.length) {
         console.log('!!! FINIIIIII');
         console.log('Erreurs : ' + totalErrors);
-
-
         console.log(printScript);
         fs.writeFileSync(path.dirname(require.main.filename) + '/copies/' + exam._id + '/SCRIPT_PRINT.txt', printScript, { encoding: 'utf8', flag: 'w' }, function(err) { console.log('Erreur générer script : ' + err); });
 
+        if (totalErrors > 0) {
+          return res.status(422).send({
+            message: 'Error while generating PDF files (' + totalErrors + ')'
+          });
+        }
 
-        // Build a ZIP archive with all the copies
-        process.chdir(path.dirname(require.main.filename) + '/copies');
-        child_process.execFile('zip', ['-r', 'copies-' + exam._id + '.zip', exam._id, '-i', '*.pdf', '*.txt'], function (err, stdout, stderr) {
+        exam.generated = new Date();
+        exam.save(function (err) {
           if (err) {
-            return res.status(400).send({
-              message: 'Error while generating the ZIP file'
+            return res.status(422).send({
+              message: errorHandler.getErrorMessage(err)
             });
           }
-          res.json({ status: true });
+
+          // Build a ZIP archive with all the copies
+          process.chdir(path.dirname(require.main.filename) + '/copies');
+          child_process.execFile('zip', ['-r', 'copies-' + exam._id + '.zip', exam._id, '-i*.pdf'], function (err, stdout, stderr) {
+            if (err) {
+              return res.status(422).send({
+                message: 'Error while generating the ZIP file'
+              });
+            }
+            res.json(exam.generated);
+          });
         });
       }
     });
@@ -843,7 +855,7 @@ exports.examByID = function (req, res, next, id) {
     });
   }
 
-  Exam.findById(id, 'title course examsession date duration registrations copies rooms ready validation')
+  Exam.findById(id, 'title course examsession date duration registrations copies rooms generated ready validation')
   .populate({ path: 'course', select: 'code name team', populate: { path: 'team', select: 'username' } })
   .populate('examsession', 'code name')
   .exec(function (err, exam) {
