@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular.module('rooms')
@@ -14,10 +14,10 @@
 
     return directive;
 
-    function link(scope, element, attrs) {
+    function link (scope, element, attrs) {
       var configuration;
 
-      scope.$watch(attrs.drawMap, function(value) {
+      scope.$watch(attrs.drawMap, function (value) {
         configuration = value;
         drawMap();
       });
@@ -41,8 +41,12 @@
 
         // Draw room info
         context.fillText(configuration.room.code + ' — ' + configuration.room.name, 5, 15);
-        context.fillText(configuration.course, 10, 25);
-        context.fillText(configuration.date, 10, 35);
+        if (configuration.course) {
+          context.fillText(configuration.course, 10, 25);
+        }
+        if (configuration.date) {
+          context.fillText(configuration.date, 10, 35);
+        }
 
         // Draw the seats
         for (var i = 0; i < map.seats.length; i++) {
@@ -65,7 +69,7 @@
         });
 
         // Draw the configuration
-        if (configuration.configuration !== null) {
+        if (configuration.hasOwnProperty('configuration')) {
           var config = configuration.room.configurations[configuration.configuration];
           for (var j = 0; j < config.seats.length; j++) {
             var s = map.seats[config.seats[j].seat];
